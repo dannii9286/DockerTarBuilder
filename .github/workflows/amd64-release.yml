@@ -2,6 +2,10 @@
 
   on:
     workflow_dispatch:
+  name: Download virtiofsd ARM64
+
+  on:
+    workflow_dispatch:
 
   permissions:
     contents: write
@@ -32,3 +36,5 @@
             files: virtiofsd
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          uses: actions/checkout@v4
+        - name: Download virtiofsd releas
