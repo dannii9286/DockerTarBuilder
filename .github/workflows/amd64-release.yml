@@ -2,10 +2,6 @@
 
   on:
     workflow_dispatch:
-  name: Download virtiofsd ARM64
-
-  on:
-    workflow_dispatch:
 
   permissions:
     contents: write
@@ -19,22 +15,15 @@
 
         - name: Download virtiofsd release
           run: |
-            # 下载最新版 virtiofsd aarch64 静态编译版
             wget https://gitlab.com/virtio-fs/virtiofsd/-/releases/v1.13.0/downloads/virtiofsd-v1.13.0-aarch64.zip
-
-            # 解压
             unzip virtiofsd-v1.13.0-aarch64.zip
-
-            # 查看文件
             ls -lh virtiofsd*
 
         - name: Create GitHub Release
           uses: softprops/action-gh-release@v2
           with:
-            tag_name: virtiofsd-arm64
-            name: virtiofsd ARM64 Binary
+            tag_name: virtiofsd-arm64-v2
+            name: virtiofsd ARM64 Binary v2
             files: virtiofsd
           env:
             GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          uses: actions/checkout@v4
-        - name: Download virtiofsd releas
